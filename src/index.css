@@ -7,6 +7,10 @@
   html,
   body {
     font-family: 'Oxygen';
+    transition:
+      background-color 0.5s,
+      color 0.5s,
+      all 0.5s;
   }
 }
 

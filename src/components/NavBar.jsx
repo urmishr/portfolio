@@ -31,7 +31,7 @@ export default function NavBar() {
   }, [isDark]);
 
   return (
-    <nav className="m-5 px-3 py-5 backdrop-blur-md dark:bg-dark-500/50 bg-light-100/30 shadow-light rounded-lg border border-dark-400/20 dark:border dark:border-dark-200/20 sticky top-5">
+    <nav className="m-5 px-3 py-5 backdrop-blur-md dark:bg-dark-500/50 bg-light-100/40 shadow-light rounded-lg border border-dark-400/20 dark:border dark:border-dark-200/20 sticky top-5">
       <div className="flex justify-between items-center">
         <div className="flex gap-1">
           <NavLink
@@ -41,7 +41,7 @@ export default function NavBar() {
             }
           >
             <HiOutlineHome className="size-7" />
-            <span className="hidden md:block text-sm">Home</span>
+            <span className="hidden md:block text-lg">Home</span>
           </NavLink>
           <NavLink
             to="/about"
@@ -50,7 +50,7 @@ export default function NavBar() {
             }
           >
             <HiOutlineUserCircle className="size-7" />
-            <span className="hidden md:block text-sm">About</span>
+            <span className="hidden md:block text-lg">About</span>
           </NavLink>
           <NavLink
             to="/projects"
@@ -59,7 +59,7 @@ export default function NavBar() {
             }
           >
             <HiOutlineWindow className="size-7" />
-            <span className="hidden md:block text-sm">Projects</span>
+            <span className="hidden md:block text-lg">Projects</span>
           </NavLink>
         </div>
         <div>
