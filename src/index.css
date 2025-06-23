@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+	html,
+	body {
+		font-family: "Oxygen";
+	}
+}
+
+@theme {
+	--color-dark-600: #161616;
+	--color-dark-500: #212121;
+	--color-dark-400: #2c2c2c;
+	--color-dark-300: #373737;
+	--color-dark-200: #919190;
+	--color-dark-100: #f5f5f5;
+	--color-green: #049753;
+	--color-grey: #d8d8db;
+	--color-light-500: #141414;
+	--color-light-400: #373737;
+	--color-light-300: #f0f0f0;
+	--color-light-200: #f7f7f8;
+	--color-light-100: #fff;
+}
