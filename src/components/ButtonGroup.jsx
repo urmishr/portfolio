@@ -4,31 +4,17 @@ import {
 } from 'react-icons/hi2';
 import Button from './ui/Button';
 import toast from 'react-hot-toast';
+import copy from 'copy-to-clipboard';
 
+const EMAILADDRESS = 'ramani.urmish@gmail.com';
 export default function ButtonGroup() {
-  const EMAILADDRESS = 'ramani.urmish@gmail.com';
-
   const handleCopyEmail = () => {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard
-        .writeText(EMAILADDRESS)
-        .then(() => toast.success('Email Copied to clipboard'))
-        .catch(() => toast.error('Failed to copy email'));
+    const success = copy(EMAILADDRESS);
+
+    if (success) {
+      toast.success('Email Copied to clipboard');
     } else {
-      // Fallback for older browsers or insecure context
-      const textArea = document.createElement('textarea');
-      textArea.value = EMAILADDRESS;
-      textArea.style.position = 'fixed'; // Prevent scrolling to bottom
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        toast.success('Email Copied to clipboard');
-      } catch {
-        toast.error('Failed to copy email');
-      }
-      document.body.removeChild(textArea);
+      toast.error('Failed to copy email');
     }
   };
   return (
