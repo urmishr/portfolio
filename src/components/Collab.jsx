@@ -1,4 +1,5 @@
-import Button from './Button';
+import Button from './ui/Button';
+import Paragraph from './ui/Paragraph';
 
 export default function Collab() {
   return (
@@ -6,9 +7,9 @@ export default function Collab() {
       <p className="text-light-400 text-center mt-5 md:mt-10 dark:text-dark-100 text-2xl md:text-4xl lg:text-7xl font-bold">
         Let's Work Together.
       </p>
-      <p className="text-sm md:text-lg lg:text-xl text-center font-semibold text-dark-200">
+      <Paragraph center={true}>
         Building seamless user experiences with visually appealing designs.
-      </p>
+      </Paragraph>
       <Button>Contact Me</Button>
     </div>
   );
