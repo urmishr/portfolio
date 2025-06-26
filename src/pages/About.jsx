@@ -16,8 +16,8 @@ export default function About() {
           <div>
             <Paragraph lineHeight={'1.5'}>
               I’m Urmish Ramani skilled MERN stack developer. Currently residing
-              in Surat, Gujarat, India. i have a passion for building dynamic
-              and responsive web applications. With expertise in MongoDB,
+              in Ottawa, Canada. i have a passion for building dynamic and
+              responsive web applications. With expertise in MongoDB,
               Express.js, React, and Node.js, I combine strong technical
               knowledge with creative problem-solving to deliver efficient and
               scalable solutions. Dedicated to continuous learning and
@@ -42,8 +42,8 @@ export default function About() {
         <Heading>More About Me</Heading>
         <Paragraph>
           I hold a B.Sc. in Information Technology from Auro University, Surat,
-          India, and a Postgraduate Diploma in Computer Programming from
-          Algonquin College, Ottawa, Canada. As a passionate web developer
+          India and a Postgraduate Diploma in Computer Programming from
+          Algonquin College Ottawa, Canada. As a passionate web developer
           specializing in the MERN stack, I am dedicated to creating innovative
           and efficient web applications. I actively keep up with the latest
           technologies and trends to continually enhance my skills.

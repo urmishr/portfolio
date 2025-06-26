@@ -93,9 +93,11 @@ export default function ImageCarousel() {
             <button
               key={index}
               onClick={() => emblaApi && emblaApi.scrollTo(index)}
-              className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-colors cursor-pointer hover:bg-green/70 ${
+              className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-colors cursor-pointer ${currentProject === 'natours' ? 'hover:bg-green/70' : 'hover:bg-indigo-400/50'} ${
                 selectedIndex === index
-                  ? 'bg-green'
+                  ? currentProject === 'natours'
+                    ? 'bg-green'
+                    : 'bg-indigo-400'
                   : 'bg-light-400/20 dark:bg-dark-200/20'
               }`}
               aria-label={`Go to slide ${index + 1}`}
