@@ -14,7 +14,7 @@ export default function NavBar() {
   const { pathname } = useLocation();
   const { isDark, setIsDark } = useTheme();
   return (
-    <nav className="mx-4 my-5 md:m-5 px-3 py-5 z-50 backdrop-blur-md dark:bg-dark-500/50 bg-light-100/40 shadow-light rounded-lg border border-dark-400/20 dark:border dark:border-dark-200/20 sticky top-5">
+    <nav className="mx-4 my-5 md:m-5 px-3 py-5 z-50 backdrop-blur-md dark:bg-dark-500/50 bg-light-100/70 shadow-light rounded-lg border border-dark-400/20 dark:border dark:border-dark-200/20 sticky top-5">
       <div className="flex justify-between items-center">
         <div className="flex gap-1">
           <NavLink
@@ -47,7 +47,7 @@ export default function NavBar() {
         </div>
         <div className="flex gap-3">
           {pathname !== '/' && (
-            <a href="urmish_resume.pdf" target="_blank" download>
+            <a href="/urmish_resume.pdf" target="_blank" download>
               <Button>
                 <HiArrowDownTray className="size-5 lg:size-7" />
                 <span>Resume</span>

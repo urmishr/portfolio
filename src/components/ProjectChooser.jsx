@@ -1,40 +1,106 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Paragraph from './ui/Paragraph';
 import { useTheme } from '../contexts/ThemeProvider';
+import { useState } from 'react';
+import { FaAngleDown } from 'react-icons/fa';
+
+const projects = [
+  {
+    id: 'natours',
+    name: 'Natours',
+    logo: '/icons/logo-green-round.png',
+    alt: 'natours logo',
+    logoClass: 'size-5',
+    path: '/projects/natours',
+  },
+  {
+    id: 'the-wild-oasis',
+    name: 'The Wild Oasis',
+    logoLight: '/icons/logo-light.png',
+    logoDark: '/icons/logo-dark.png',
+    alt: 'the wild oasis logo',
+    logoClass: 'h-5',
+    path: '/projects/the-wild-oasis',
+  },
+];
 
 export default function ProjectChooser() {
   const { isDark } = useTheme();
+  const { pathname } = useLocation();
+  const currentProject = pathname.split('/')[2];
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Get current project info
+  const activeProject =
+    projects.find((p) => p.id === currentProject) || projects[0];
+
+  // Filter projects excluding current
+  const otherProjects = projects.filter((p) => p.id !== currentProject);
+
   return (
-    <div className="bg-light-300 dark:bg-dark-400 p-4 space-y-5 rounded-lg  md:mx-auto">
-      <Paragraph center={true}>Select any project for more details</Paragraph>
-      <div className="flex gap-4 items-center justify-center">
-        <NavLink
-          to={'/projects/natours'}
-          className={({ isActive }) =>
-            `flex gap-3 items-center hover:ring-3 hover:scale-105 transition-all duration-300 hover:ring-light-400/20 hover:dark:ring-dark-200/20 text-dark-200 ring ring-light-400/20 dark:ring-dark-200/20 dark:bg-dark-300 p-2 rounded-md ${isActive && 'text-light-400 dark:text-dark-100 font-semibold bg-light-100 dark:bg-dark-500 ring-3 ring-light-400/20 dark:ring-dark-200/20 '}`
-          }
-        >
-          <img
-            src="/icons/logo-green-round.png"
-            alt="natours logo"
-            className="size-5"
-          />
-          <span>Natours</span>
-        </NavLink>
-        <NavLink
-          to={'/projects/the-wild-oasis'}
-          className={({ isActive }) =>
-            `flex gap-3  items-center hover:ring-3 hover:scale-105 transition-all duration-300 hover:ring-light-400/20 hover:dark:ring-dark-200/20 text-dark-200 whitespace-nowrap  ring ring-light-400/20 dark:ring-dark-200/20 dark:bg-dark-300 p-2 rounded-md ${isActive && 'text-light-400 dark:text-dark-100 font-semibold bg-light-100 dark:bg-dark-500 ring-3 ring-light-400/20 dark:ring-dark-200/20 hover:ring-0'}`
-          }
-        >
-          <img
-            src={`/icons/logo-${isDark ? 'dark' : 'light'}.png`}
-            alt="natours logo"
-            className="h-5"
-          />
-          <span>The Wild Oasis</span>
-        </NavLink>
+    <div
+      className="bg-light-300 dark:bg-dark-400 p-2 lg:p-4 rounded-lg cursor-pointer ring ring-light-400/20 dark:ring-dark-200/20"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className="flex items-center gap-2 justify-between">
+        <Paragraph center={true}>
+          <NavLink
+            to={activeProject.path}
+            className={({ isActive }) =>
+              `flex gap-3 items-center text-dark-200 dark:bg-dark-300 p-2 rounded-md ${
+                isActive
+                  ? 'text-light-400  dark:text-dark-100 font-semibold bg-light-100 dark:bg-dark-500'
+                  : ''
+              }`
+            }
+          >
+            <img
+              src={
+                activeProject.id === 'the-wild-oasis'
+                  ? isDark
+                    ? activeProject.logoDark
+                    : activeProject.logoLight
+                  : activeProject.logo
+              }
+              alt={activeProject.alt}
+              className={activeProject.logoClass}
+            />
+            <span>{activeProject.name}</span>
+          </NavLink>
+        </Paragraph>
+        <FaAngleDown className={`${isOpen ? 'rotate-180' : ''} lg:size-5`} />
       </div>
+
+      {isOpen && (
+        <div className="flex flex-col gap-3 pt-3">
+          {otherProjects.map((project) => (
+            <NavLink
+              key={project.id}
+              to={project.path}
+              className={({ isActive }) =>
+                `flex gap-3 items-center text-dark-200 dark:bg-dark-300 p-2 rounded-md bg-light-200 ${
+                  isActive
+                    ? 'text-light-400 dark:text-dark-100 font-semibold bg-light-100 dark:bg-dark-500'
+                    : ''
+                }`
+              }
+            >
+              <img
+                src={
+                  project.id === 'the-wild-oasis'
+                    ? isDark
+                      ? project.logoDark
+                      : project.logoLight
+                    : project.logo
+                }
+                alt={project.alt}
+                className={project.logoClass}
+              />
+              <span>{project.name}</span>
+            </NavLink>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

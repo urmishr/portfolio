@@ -8,8 +8,10 @@ import Social from '../components/Social';
 export default function Projects() {
   return (
     <Container>
-      <Tag text={'projects'} />
-      <ProjectChooser />
+      <div className="flex justify-between ">
+        <Tag text={'projects'} />
+        <ProjectChooser />
+      </div>
       <Outlet />
       <Collab />
       <Social />

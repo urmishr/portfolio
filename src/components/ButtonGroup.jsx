@@ -19,7 +19,7 @@ export default function ButtonGroup() {
   };
   return (
     <div className="flex gap-3 ">
-      <a href="urmish_resume.pdf" target="_blank" download>
+      <a href="/urmish_resume.pdf" target="_blank" download>
         <Button>
           <span>
             <HiArrowDownTray className="size-5 lg:size-7" />
