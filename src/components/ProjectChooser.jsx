@@ -73,38 +73,36 @@ export default function ProjectChooser() {
         <FaAngleDown className={`${isOpen ? 'rotate-180' : ''} lg:size-5`} />
       </div>
 
-      {isOpen && (
-        <div className={` flex flex-col gap-3 pt-2`}>
-          {otherProjects.map((project) => (
-            <NavLink
-              key={project.id}
-              to={project.path}
-              className={({ isActive }) =>
-                `flex gap-3 items-center text-dark-200 font-semibold  dark:bg-dark-300 p-2 rounded-md bg-light-200 ${
-                  isActive
-                    ? 'text-light-400  dark:text-dark-100 font-semibold  bg-light-100 dark:bg-dark-500'
-                    : ''
-                }`
+      <div className={` flex-col gap-3 pt-2  ${isOpen ? 'flex' : 'hidden'}`}>
+        {otherProjects.map((project) => (
+          <NavLink
+            key={project.id}
+            to={project.path}
+            className={({ isActive }) =>
+              `flex gap-3 items-center text-dark-200 font-semibold  dark:bg-dark-300 p-2 rounded-md bg-light-200 ${
+                isActive
+                  ? 'text-light-400  dark:text-dark-100 font-semibold  bg-light-100 dark:bg-dark-500'
+                  : ''
+              }`
+            }
+          >
+            <img
+              src={
+                project.id === 'the-wild-oasis'
+                  ? isDark
+                    ? project.logoDark
+                    : project.logoLight
+                  : project.logo
               }
-            >
-              <img
-                src={
-                  project.id === 'the-wild-oasis'
-                    ? isDark
-                      ? project.logoDark
-                      : project.logoLight
-                    : project.logo
-                }
-                alt={project.alt}
-                className={project.logoClass}
-              />
-              <span className="text-sm md:text-lg lg:text-xl">
-                {project.name}
-              </span>
-            </NavLink>
-          ))}
-        </div>
-      )}
+              alt={project.alt}
+              className={project.logoClass}
+            />
+            <span className="text-sm md:text-lg lg:text-xl">
+              {project.name}
+            </span>
+          </NavLink>
+        ))}
+      </div>
     </div>
   );
 }
