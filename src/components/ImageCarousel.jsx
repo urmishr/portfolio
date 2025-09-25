@@ -56,7 +56,7 @@ export default function ImageCarousel() {
                     className="flex-grow-0 flex-shrink-0 basis-[70%] md:basis-[40%]  rounded overflow-hidden"
                   >
                     <img
-                      src={`/project_images/the-wild-oasis/TWO-${number}.png`}
+                      src={`/project_images/the-wild-oasis/TWO-${number}.jpg`}
                       alt={`the wild oasis image ${number}`}
                       className=" dark:opacity-85"
                     />
@@ -69,7 +69,7 @@ export default function ImageCarousel() {
                       className="flex-grow-0 flex-shrink-0 basis-[70%] md:basis-[40%] lg:basis-[20%] rounded overflow-hidden"
                     >
                       <img
-                        src={`/project_images/natours/natours_m${number}.png`}
+                        src={`/project_images/natours/natours_m${number}.jpg`}
                         alt={`natours image ${number}`}
                         className="max-h-[500px] object-contain dark:opacity-85"
                       />
@@ -80,7 +80,7 @@ export default function ImageCarousel() {
                       className="flex-grow-0 flex-shrink-0 basis-[80%] lg:basis-[40%] rounded overflow-hidden"
                     >
                       <img
-                        src={`/project_images/natours/natours${number}.png`}
+                        src={`/project_images/natours/natours${number}.jpg`}
                         alt={`natours image ${number}`}
                       />
                     </div>
