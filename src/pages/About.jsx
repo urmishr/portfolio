@@ -5,26 +5,53 @@ import Heading from '../components/ui/Heading';
 import Paragraph from '../components/ui/Paragraph';
 import Tag from '../components/ui/Tag';
 export default function About() {
+  const sections = [
+    {
+      title: 'What I build',
+      text: 'I build responsive web applications that balance thoughtful user experiences with clean, maintainable code across frontend interfaces and backend services.',
+    },
+    {
+      title: 'How I work',
+      text: 'I focus on building modern full-stack applications with clean architecture, strong attention to detail, and smooth user experiences.',
+    },
+    {
+      title: 'Education',
+      text: 'I hold a B.Sc. in Information Technology from Auro University in Surat, India, and a Postgraduate Diploma in Computer Programming from Algonquin College in Ottawa, Canada.',
+    },
+    {
+      title: 'Outside work',
+      text: 'When I’m not coding, you’ll probably find me driving, exploring new technology, and building fun projects using ESP32 and Arduino. I enjoy experimenting with hardware, automation, and interactive technology.',
+    },
+  ];
+
   return (
     <Container>
       <Tag text={'About Me'} />
       <div className="flex flex-col md:flex-row md:items-start justify-between md:p-5">
         <div className=" md:w-1/2 lg:w-3/4">
           <div className="my-3 lg:my-5">
-            <Heading>It's Me Urmish</Heading>
+            <Heading>I'm Urmish</Heading>
           </div>
           <div>
             <Paragraph lineHeight={'1.5'}>
-              I’m Urmish Ramani skilled MERN stack developer. Currently residing
-              in Ottawa, Canada. i have a passion for building dynamic and
-              responsive web applications. With expertise in MongoDB,
-              Express.js, React, and Node.js, I combine strong technical
-              knowledge with creative problem-solving to deliver efficient and
-              scalable solutions. Dedicated to continuous learning and
-              innovation, I am committed to crafting seamless user experiences
-              and writing clean, maintainable code. Whether working on front-end
-              interfaces or back-end services, I bring a collaborative spirit
-              and attention to detail to every project.
+              I’m a full-stack developer based in Ottawa, Canada, focused on
+              building modern web and mobile applications that are scalable,
+              user-focused, and visually polished. I enjoy turning ideas into
+              real products through clean architecture, thoughtful design, and
+              practical problem-solving.
+              <br></br>
+              <br></br>
+              My experience includes developing responsive frontend interfaces,
+              backend services, and full-stack applications using modern
+              JavaScript technologies. I care about performance, usability, and
+              maintainable code, with a strong focus on creating products that
+              feel smooth and intuitive to use.
+              <br></br>
+              <br></br>
+              I’m especially interested in building products that combine strong
+              technical foundations with great user experience, while
+              continuously learning new tools and technologies to improve the
+              way I build.
             </Paragraph>
           </div>
         </div>
@@ -38,23 +65,29 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="space-y-4 md:p-3">
-        <Heading>More About Me</Heading>
-        <Paragraph>
-          I hold a B.Sc. in Information Technology from Auro University, Surat,
-          India and a Postgraduate Diploma in Computer Programming from
-          Algonquin College Ottawa, Canada. As a passionate web developer
-          specializing in the MERN stack, I am dedicated to creating innovative
-          and efficient web applications. I actively keep up with the latest
-          technologies and trends to continually enhance my skills.
-          <br />
-          <br />
-          Outside of work, I enjoy driving, exploring nature, and traveling to
-          new places, which helps me stay inspired and refreshed. I believe in
-          maintaining a healthy balance between work and personal life, as it
-          fuels my creativity and motivation. Embracing continuous learning and
-          curiosity, I strive to bring fresh perspectives and enthusiasm to
-          every project I undertake.
+      <div className="space-y-5 md:p-3">
+        <Heading as="h2">More About Me</Heading>
+        <div className="grid gap-5 md:grid-cols-2">
+          {sections.map((section) => (
+            <section
+              key={section.title}
+              className="border-t border-light-400/15 dark:border-dark-200/20 pt-4"
+            >
+              <h3 className="text-light-400 dark:text-dark-100 text-base lg:text-lg font-bold">
+                {section.title}
+              </h3>
+              <p className="mt-2 text-sm md:text-base font-medium leading-relaxed text-dark-200">
+                {section.text}
+              </p>
+            </section>
+          ))}
+        </div>
+      </div>
+      <div className="mt-8 mb-6">
+        <div className="mx-auto mb-8 h-px w-full bg-gray-300/40 dark:bg-gray-500/20" />
+        <Paragraph center={true}>
+          Have an idea, opportunity, or project in mind? I’d be happy to hear
+          about it.
         </Paragraph>
       </div>
       <Collab />

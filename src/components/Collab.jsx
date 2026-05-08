@@ -6,7 +6,7 @@ export default function Collab() {
   return (
     <div className="flex flex-col items-center gap-5 lg:gap-7">
       <div className="lg:mt-8">
-        <Heading>Let's Work Together.</Heading>
+        <Heading as="h2">Let's Work Together.</Heading>
       </div>
       <Paragraph center={true}>
         Building seamless user experiences with visually appealing designs.

@@ -18,8 +18,13 @@ export default function ButtonGroup() {
     }
   };
   return (
-    <div className="flex gap-3 ">
-      <a href="/urmish_resume.pdf" target="_blank" download>
+    <div className="flex flex-nowrap gap-3 ">
+      <a
+        href="/urmish_resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+      >
         <Button>
           <span>
             <HiArrowDownTray className="size-5 lg:size-7" />
@@ -27,7 +32,7 @@ export default function ButtonGroup() {
           Resume
         </Button>
       </a>
-      <Button onClick={handleCopyEmail}>
+      <Button onClick={handleCopyEmail} aria-label="Copy email address">
         <span>
           <HiOutlineClipboardDocumentCheck className="size-5 lg:size-7" />
         </span>

@@ -9,7 +9,7 @@ export default function AppLayout() {
   return (
     <main className="min-h-screen w-full">
       <Toaster
-        position="bottom-center"
+        position="top-center"
         toastOptions={{
           style: isDark
             ? {
