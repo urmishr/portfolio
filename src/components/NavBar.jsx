@@ -6,15 +6,17 @@ import {
   HiOutlineWindow,
   HiOutlineSun,
   HiOutlineMoon,
-  HiArrowDownTray,
+  HiOutlineEye,
 } from 'react-icons/hi2';
 import Button from './ui/Button';
 
 import { useTheme } from '../contexts/ThemeProvider';
+import ResumePreviewModal from './ResumePreviewModal';
 export default function NavBar() {
   const { pathname } = useLocation();
   const { isDark, setIsDark } = useTheme();
   const [isHidden, setIsHidden] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -93,17 +95,10 @@ export default function NavBar() {
         </div>
         <div className="flex gap-2 items-center">
           {pathname !== '/' && (
-            <a
-              href="/urmish_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-            >
-              <Button compact>
-                <HiArrowDownTray className="size-5 lg:size-6" />
-                <span>Resume</span>
-              </Button>
-            </a>
+            <Button compact onClick={() => setIsResumeOpen(true)}>
+              <HiOutlineEye className="size-5 lg:size-6" />
+              <span>Resume</span>
+            </Button>
           )}
           <button
             type="button"
@@ -119,6 +114,10 @@ export default function NavBar() {
           </button>
         </div>
       </div>
+      <ResumePreviewModal
+        open={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
     </nav>
   );
 }

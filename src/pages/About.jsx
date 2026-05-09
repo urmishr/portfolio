@@ -4,23 +4,33 @@ import Collab from '../components/Collab';
 import Heading from '../components/ui/Heading';
 import Paragraph from '../components/ui/Paragraph';
 import Tag from '../components/ui/Tag';
+import {
+  HiOutlineAcademicCap,
+  HiOutlineBriefcase,
+  HiOutlineCodeBracketSquare,
+  HiOutlineRocketLaunch,
+} from 'react-icons/hi2';
 export default function About() {
   const sections = [
     {
+      icon: HiOutlineCodeBracketSquare,
       title: 'What I build',
       text: 'I build responsive web applications that balance thoughtful user experiences with clean, maintainable code across frontend interfaces and backend services.',
     },
     {
+      icon: HiOutlineBriefcase,
       title: 'How I work',
       text: 'I focus on building modern full-stack applications with clean architecture, strong attention to detail, and smooth user experiences.',
     },
     {
+      icon: HiOutlineAcademicCap,
       title: 'Education',
       text: 'I hold a B.Sc. in Information Technology from Auro University in Surat, India, and a Postgraduate Diploma in Computer Programming from Algonquin College in Ottawa, Canada.',
     },
     {
+      icon: HiOutlineRocketLaunch,
       title: 'Outside work',
-      text: 'When I’m not coding, you’ll probably find me driving, exploring new technology, and building fun projects using ESP32 and Arduino. I enjoy experimenting with hardware, automation, and interactive technology.',
+      text: 'Outside of development, I enjoy exploring new technology, tinkering with hardware and automation projects, and I’ve always had a strong passion for motorsports — becoming a racing driver would probably be my dream outside of tech.',
     },
   ];
 
@@ -73,8 +83,9 @@ export default function About() {
               key={section.title}
               className="border-t border-light-400/15 dark:border-dark-200/20 pt-4"
             >
-              <h3 className="text-light-400 dark:text-dark-100 text-base lg:text-lg font-bold">
-                {section.title}
+              <h3 className="flex items-center gap-2 text-light-400 dark:text-dark-100 text-base lg:text-lg font-bold">
+                <section.icon className="size-5 shrink-0 text-light-400/80 dark:text-dark-100/80" />
+                <span>{section.title}</span>
               </h3>
               <p className="mt-2 text-sm md:text-base font-medium leading-relaxed text-dark-200">
                 {section.text}

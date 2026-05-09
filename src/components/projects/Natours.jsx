@@ -14,14 +14,14 @@ export default function Natours() {
     ],
     [
       'Frontend',
-      'React 19, Tailwind CSS, React Router DOM, React Hot Toast, React Simple Star Rating, React Icons',
+      'React 19, Tailwind CSS, React Router DOM, React Simple Star Rating, React Icons',
     ],
     ['Maps & UI', 'MapLibre GL, MapLibre React Components, Motion, Heroicons'],
     ['Payments', 'Stripe JS, React Stripe JS'],
     ['Tools', 'Vite, ESLint, Prettier, Parcel, Nodemon'],
   ];
   const features = [
-    'Full MERN stack: MongoDB, Express, React, Node.js',
+    'Full stack built with MongoDB, Express, React, and Node.js',
     'Secure user authentication with JWT & bcrypt',
     'Responsive UI styled with Tailwind CSS and smooth animations',
     'Interactive maps using MapLibre GL',
@@ -31,7 +31,7 @@ export default function Natours() {
     'Email notifications via Nodemailer',
     'Image optimization with Sharp',
     'Client-side routing with React Router DOM',
-    'User-friendly toast notifications with React Hot Toast',
+    'User-friendly feedback animations',
   ];
   return (
     <div className="mt-3 overflow-hidden md:mt-5 dark:bg-dark-400 flex flex-col  justify-between bg-light-300 p-3 md:p-5 lg:p-6 rounded-md md:rounded-lg lg:rounded-xl">
@@ -69,12 +69,12 @@ export default function Natours() {
           </div>
         </div>
         <Paragraph>
-          Natours is a full-stack MERN (MongoDB, Express, React, Node.js) travel
-          and adventure tour booking platform built to deliver a seamless and
-          engaging user experience. This project demonstrates a strong command
-          over both frontend and backend development, integrating modern tools
-          and libraries to build a performant, secure, and scalable web
-          application.
+          Natours is a full-stack travel and adventure tour booking platform
+          built with MongoDB, Express, React, and Node.js to deliver a
+          seamless and engaging user experience. This project demonstrates a
+          strong command over both frontend and backend development,
+          integrating modern tools and libraries to build a performant,
+          secure, and scalable web application.
         </Paragraph>
       </div>
       <div className="flex flex-col my-5 lg:flex-row mt-5 lg:mt-10 gap-5">

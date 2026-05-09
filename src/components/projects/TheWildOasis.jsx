@@ -17,7 +17,7 @@ export default function TheWildOasis() {
     ],
     [
       'Frontend',
-      'React 19, Tailwind CSS, React Router DOM v7, React Query, React Hook Form, React Hot Toast, Recharts',
+      'React 19, Tailwind CSS, React Router DOM v7, React Query, React Hook Form, Recharts',
     ],
     [
       'UI',
@@ -34,7 +34,7 @@ export default function TheWildOasis() {
     'Email notifications and automated workflows with Supabase Edge Functions',
     'Image storage and optimization using Supabase Storage',
     'Client-side routing with React Router DOM v7',
-    'User-friendly toast notifications using React Hot Toast',
+    'User-friendly copy feedback animations',
     'Data fetching and caching with React Query for optimal performance',
   ];
 
