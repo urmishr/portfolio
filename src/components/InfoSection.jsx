@@ -1,5 +1,5 @@
 import ButtonGroup from './ButtonGroup';
-import Icons from './Icons';
+import Tag from './ui/Tag';
 import TechStackMasonry from './ui/TechStackMasonry';
 
 export default function InfoSection() {
@@ -32,7 +32,8 @@ export default function InfoSection() {
             />
           </div>
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 space-y-3">
+          <Tag text="Core Stack" dotColor="purple" textClassName="text-purple-300" />
           <TechStackMasonry />
         </div>
       </div>
