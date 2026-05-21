@@ -12,7 +12,7 @@ export default function Social() {
       </div>
       <div className="flex gap-2 text-md md:text-lg lg:text-xl">
         <a
-          href="https://linkedin.com/in/urmish-ramani-25687a87"
+          href="https://linkedin.com/in/urmishr"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Open LinkedIn profile"
