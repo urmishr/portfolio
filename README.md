@@ -2,7 +2,7 @@
 
 ## About
 
-**urmish.site** is my personal portfolio website built with React, Tailwind CSS, and Framer Motion. It showcases my projects, skills, and contact information in a clean, responsive, and accessible design.
+**urmish.dev** is my personal portfolio website built with React, Tailwind CSS, and Framer Motion. It showcases my projects, skills, and contact information in a clean, responsive, and accessible design.
 
 The site features:
 
