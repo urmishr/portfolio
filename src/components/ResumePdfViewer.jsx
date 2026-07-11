@@ -57,10 +57,7 @@ function ResumePdfPage({ pdfDocument, pageNumber, containerWidth }) {
 
   return (
     <div className="mx-auto w-full">
-      <canvas
-        ref={canvasRef}
-        className="block w-full rounded-xl border border-light-400/10 bg-white shadow-sm dark:border-dark-200/10"
-      />
+      <canvas ref={canvasRef} className="block w-full rounded-xl border border-white/10 bg-white shadow-sm" />
     </div>
   );
 }
@@ -123,7 +120,7 @@ export default function ResumePdfViewer() {
 
   if (error) {
     return (
-      <div className="flex h-full items-center justify-center px-6 py-10 text-center text-sm font-medium text-light-400/70 dark:text-dark-100/70">
+      <div className="flex h-full items-center justify-center px-6 py-10 text-center text-sm font-medium text-[#f4f4f5]/70">
         Unable to load the resume preview.
       </div>
     );
@@ -137,7 +134,7 @@ export default function ResumePdfViewer() {
     >
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 sm:gap-5">
         {loading ? (
-          <div className="flex h-[60vh] items-center justify-center rounded-xl border border-dashed border-light-400/15 bg-white/70 text-sm font-medium text-light-400/60 dark:border-dark-200/15 dark:bg-dark-400/40 dark:text-dark-100/60">
+          <div className="flex h-[60vh] items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/5 text-sm font-medium text-[#f4f4f5]/60">
             Loading resume...
           </div>
         ) : (

@@ -1,0 +1,110 @@
+.section {
+  padding: clamp(50px, 8vw, 110px) 0 clamp(30px, 4vw, 50px);
+  text-align: center;
+}
+
+.label {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.heading {
+  font-size: clamp(2.6rem, 10vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin: 18px 0 22px;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.sub {
+  color: var(--muted);
+  font-size: clamp(15px, 1.8vw, 18px);
+  max-width: 520px;
+  margin: 0 auto 34px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--accent);
+  color: var(--bg);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 15px 28px;
+  border-radius: 14px;
+  border: 0;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background-color 0.7s ease,
+    color 0.45s ease;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg);
+  background-image: var(--site-bg-grid);
+  background-size: var(--site-bg-size);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.cta:hover:not(:active) {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.cta:hover:not(:active)::before {
+  opacity: 1;
+}
+
+.ctaIcon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .section {
+    min-height: calc(100svh - 104px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(72px, 14vh, 120px) 0;
+    scroll-margin-top: 104px;
+  }
+
+  .heading {
+    font-size: clamp(3.1rem, 15vw, 4.4rem);
+  }
+
+  .sub {
+    max-width: 24rem;
+    margin-bottom: 46px;
+  }
+
+  .cta {
+    min-width: min(100%, 208px);
+    justify-content: center;
+  }
+}
