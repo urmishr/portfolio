@@ -11,6 +11,22 @@ node_modules
 dist
 dist-ssr
 *.local
+temp/
+
+# Local-only legacy assets kept off GitHub
+public/logo.png
+public/Image.png
+public/icons/Image.png
+public/icons/express-light.svg
+public/icons/express.svg
+public/icons/instagram.svg
+public/icons/linked-in.svg
+public/icons/logo-light.png
+public/icons/mongodb.svg
+public/icons/node-js.svg
+public/icons/react.svg
+public/icons/x-icon.svg
+public/project_images/natours/natours_m*.jpg
 
 # Editor directories and files
 .vscode/*

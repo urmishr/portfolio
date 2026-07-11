@@ -1,0 +1,240 @@
+.section {
+  padding: clamp(48px, 8vw, 96px) 0 clamp(30px, 5vw, 56px);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(28px, 5vw, 54px);
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.availPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--accent);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 100px;
+}
+
+.availDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.6s infinite;
+}
+
+.row {
+  display: flex;
+  gap: clamp(28px, 5vw, 56px);
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.left {
+  flex: 2 1 420px;
+  min-width: 280px;
+}
+
+.imFrom {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(14px, 2.4vw, 17px);
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.h1 {
+  font-size: clamp(3rem, 11vw, 7.2rem);
+  line-height: 0.92;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: clamp(20px, 3vw, 30px);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: clamp(15px, 1.8vw, 18px);
+  margin-bottom: clamp(26px, 4vw, 38px);
+}
+
+.metaStrong {
+  color: #e6e6ea;
+  font-weight: 500;
+}
+
+.metaDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #f4f4f5;
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.resumeBtn:hover {
+  color: var(--bg);
+}
+
+.copyBtn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    border-color 0.45s ease,
+    color 0.45s ease;
+}
+
+.copyBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg);
+  background-image: var(--site-bg-grid);
+  background-size: var(--site-bg-size);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.copyBtn:hover {
+  border-color: color-mix(in srgb, #ffffff 22%, transparent);
+  color: #ffffff;
+}
+
+.copyBtn:hover::before {
+  opacity: 1;
+}
+
+.accentText {
+  color: var(--accent);
+}
+
+.right {
+  flex: 1 1 240px;
+  min-width: 220px;
+  max-width: 340px;
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.portraitStripes {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 8%, transparent) 0 12px,
+    transparent 12px 24px
+  );
+}
+
+.portraitFloat {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  animation: floaty 5s ease-in-out infinite;
+}
+
+.portraitCircle {
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: radial-gradient(circle at 50% 35%, #2a2a30, var(--panel));
+}
+
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding-top: 20px;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .right {
+    width: min(78vw, 320px);
+    flex-basis: min(78vw, 320px);
+    margin-inline: auto;
+  }
+}
