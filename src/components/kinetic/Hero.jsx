@@ -81,8 +81,21 @@ export default function Hero() {
           <div className={styles.portrait}>
             <div className={styles.portraitStripes} />
             <div className={styles.portraitFloat}>
-              <div className={styles.portraitCircle}>
-                <img src="/urmish.png" alt="Portrait illustration of Urmish Ramani" className={styles.portraitImg} />
+              <div
+                data-mag
+                data-mag-radius="170"
+                data-mag-strength="0.08"
+                data-mag-max="14"
+                data-mag-scale="1.065"
+                data-mag-press-scale="0.965"
+                className={styles.portraitCircle}
+              >
+                <img
+                  src="/urmish.png"
+                  alt="Portrait illustration of Urmish Ramani"
+                  className={styles.portraitImg}
+                  draggable={false}
+                />
               </div>
             </div>
           </div>

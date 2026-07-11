@@ -235,6 +235,28 @@
   overflow: hidden;
   border: 1px solid var(--border);
   background: radial-gradient(circle at 50% 35%, #2a2a30, var(--panel));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+  cursor: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.portraitCircle:hover,
+.portraitCircle:global(.is-magnetic-active) {
+  border-color: color-mix(in srgb, var(--accent) 62%, #ffffff);
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.38),
+    0 0 0 7px color-mix(in srgb, var(--accent) 13%, transparent);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.portraitCircle:active {
+  border-color: #ffffff;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.34),
+    0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .portraitImg {
@@ -242,6 +264,9 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
 }
 
 @media (max-width: 760px) {

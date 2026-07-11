@@ -19,6 +19,7 @@ export default function useMagnetic(rootRef) {
     const positions = new WeakMap();
     const baseTransforms = new WeakMap();
     const pressHandlers = new WeakMap();
+    const configs = new WeakMap();
     let pressed = null;
     let activeEl = null;
     let magneticClickTarget = null;
@@ -55,11 +56,23 @@ export default function useMagnetic(rootRef) {
       clearPressed();
     };
 
+    const readNumber = (value, fallback) => {
+      const parsed = Number(value);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
     mags.forEach((m) => {
       const baseTransform = window.getComputedStyle(m).transform;
       const onPress = () => {
         pressed = m;
       };
+      configs.set(m, {
+        radius: readNumber(m.dataset.magRadius, pullRadius),
+        strength: readNumber(m.dataset.magStrength, pullStrength),
+        max: readNumber(m.dataset.magMax, maxPull),
+        scale: readNumber(m.dataset.magScale, activeScale),
+        pressScale: readNumber(m.dataset.magPressScale, pressScale),
+      });
       baseTransforms.set(m, baseTransform === 'none' ? '' : baseTransform);
       pressHandlers.set(m, onPress);
       m.addEventListener('pointerdown', onPress);
@@ -67,16 +80,17 @@ export default function useMagnetic(rootRef) {
 
     const loop = () => {
       let active = null;
-      let activeDist = pullRadius;
+      let activeDist = Infinity;
 
       mags.forEach((m) => {
+        const config = configs.get(m);
         const r = m.getBoundingClientRect();
         const dx = mx - (r.left + r.width / 2);
         const dy = my - (r.top + r.height / 2);
         const dist = Math.hypot(dx, dy);
 
-        if (dist < activeDist) {
-          active = { el: m, dx, dy };
+        if (dist < config.radius && dist < activeDist) {
+          active = { el: m, dx, dy, config };
           activeDist = dist;
         }
       });
@@ -84,12 +98,13 @@ export default function useMagnetic(rootRef) {
 
       mags.forEach((m) => {
         const isActive = active?.el === m;
+        const config = configs.get(m);
         const current = positions.get(m) || { x: 0, y: 0, scale: 1 };
 
         const target = {
-          x: isActive ? Math.max(-maxPull, Math.min(maxPull, active.dx * pullStrength)) : 0,
-          y: isActive ? Math.max(-maxPull, Math.min(maxPull, active.dy * pullStrength)) : 0,
-          scale: pressed === m ? pressScale : isActive ? activeScale : 1,
+          x: isActive ? Math.max(-config.max, Math.min(config.max, active.dx * config.strength)) : 0,
+          y: isActive ? Math.max(-config.max, Math.min(config.max, active.dy * config.strength)) : 0,
+          scale: pressed === m ? config.pressScale : isActive ? config.scale : 1,
         };
         const next = {
           x: current.x + (target.x - current.x) * ease,

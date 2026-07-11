@@ -304,10 +304,7 @@
   position: relative;
   border-radius: 20px;
   border: 1px solid var(--border);
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--active-tint, var(--accent)) 32%, transparent), transparent 14%),
-    linear-gradient(270deg, color-mix(in srgb, #a78bfa 34%, transparent), transparent 14%),
-    #0d0d0f;
+  background: #0d0d0f;
   min-height: clamp(230px, 45vw, 520px);
   display: grid;
   place-items: center;
@@ -346,9 +343,7 @@
   border: 1px solid rgba(226, 232, 240, 0.28);
   border-radius: 18px;
   background: #151519;
-  box-shadow:
-    0 26px 80px rgba(0, 0, 0, 0.46),
-    0 0 36px color-mix(in srgb, var(--active-tint, var(--accent)) 12%, transparent);
+  box-shadow: none;
   opacity: 1;
   transform:
     translateX(calc(var(--slide-offset) * 19%))
@@ -371,6 +366,7 @@
 
 .slide[data-offset='-1'],
 .slide[data-offset='1'] {
+  box-shadow: none;
   filter: brightness(0.34) saturate(0.72) contrast(0.94);
 }
 
@@ -381,6 +377,7 @@
 
 .slide[aria-current='true'] {
   z-index: 8;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.46);
   filter: none;
 }
 

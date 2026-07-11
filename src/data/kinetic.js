@@ -4,7 +4,11 @@ export const RESUME_URL = '/urmish_resume.pdf';
 export const SOCIALS = [
   { label: 'in', name: 'LinkedIn', href: 'https://linkedin.com/in/urmishr' },
   { label: 'gh', name: 'GitHub', href: 'https://github.com/urmishr' },
-  { label: 'ig', name: 'Instagram', href: 'https://instagram.com/urmish.ramani' },
+  {
+    label: 'ig',
+    name: 'Instagram',
+    href: 'https://instagram.com/urmish.ramani',
+  },
   { label: 'x', name: 'X', href: 'https://x.com/urmish_ramani' },
 ];
 
@@ -119,9 +123,18 @@ export const PROJECTS = [
       'Email notifications via Nodemailer, image optimization with Sharp',
     ],
     techRows: [
-      { label: 'Backend', value: 'Node.js, Express, MongoDB, Mongoose, JWT, Bcrypt, Nodemailer' },
-      { label: 'Frontend', value: 'React 19, Tailwind CSS, React Router DOM, React Icons' },
-      { label: 'Maps & UI', value: 'MapLibre GL, MapLibre React Components, Motion, Heroicons' },
+      {
+        label: 'Backend',
+        value: 'Node.js, Express, MongoDB, Mongoose, JWT, Bcrypt, Nodemailer',
+      },
+      {
+        label: 'Frontend',
+        value: 'React 19, Tailwind CSS, React Router DOM, React Icons',
+      },
+      {
+        label: 'Maps & UI',
+        value: 'MapLibre GL, MapLibre React Components, Motion, Heroicons',
+      },
       { label: 'Payments', value: 'Stripe JS, React Stripe JS' },
       { label: 'Tools', value: 'Vite, ESLint, Prettier, Parcel, Nodemon' },
     ],
@@ -166,7 +179,10 @@ export const PROJECTS = [
       'Light / dark theming and toast feedback',
     ],
     techRows: [
-      { label: 'Frontend', value: 'React, Styled Components, React Router DOM' },
+      {
+        label: 'Frontend',
+        value: 'React, Styled Components, React Router DOM',
+      },
       { label: 'Data', value: 'Supabase (Postgres, Auth, Storage, RLS)' },
       { label: 'State', value: 'React Query, React Hook Form' },
       { label: 'UI', value: 'Recharts, React Hot Toast, date-fns' },
