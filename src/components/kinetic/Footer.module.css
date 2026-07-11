@@ -35,7 +35,9 @@
   display: block;
 }
 
-.socialLink:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.socialLink:hover,
+.socialLink:global(.is-magnetic-active) {
+  background: var(--bg);
+  border-color: #ffffff;
+  color: #ffffff;
 }

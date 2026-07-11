@@ -13,12 +13,57 @@ export default function useMagnetic(rootRef) {
     const pullStrength = 0.14;
     const maxPull = 6;
     const ease = 0.14;
+    const pressEase = 0.32;
+    const activeScale = 1.075;
+    const pressScale = 0.985;
     const positions = new WeakMap();
+    const baseTransforms = new WeakMap();
+    const pressHandlers = new WeakMap();
+    let pressed = null;
+    let activeEl = null;
+    let magneticClickTarget = null;
+    let wasActive = false;
+
+    const setCursorMagnetized = (isActive) => {
+      if (wasActive === isActive) return;
+      wasActive = isActive;
+      window.dispatchEvent(new CustomEvent('magnetic-cursor-change', { detail: { isActive } }));
+    };
 
     const onMove = (e) => {
       mx = e.clientX;
       my = e.clientY;
     };
+
+    const clearPressed = () => {
+      magneticClickTarget = null;
+      pressed = null;
+    };
+
+    const onPointerDown = (event) => {
+      const directTarget = event.target instanceof Element && event.target.closest('[data-mag]');
+      if (event.button !== 0 || directTarget || !activeEl) return;
+      event.preventDefault();
+      magneticClickTarget = activeEl;
+      pressed = activeEl;
+    };
+
+    const onPointerUp = () => {
+      if (magneticClickTarget && activeEl === magneticClickTarget) {
+        magneticClickTarget.click();
+      }
+      clearPressed();
+    };
+
+    mags.forEach((m) => {
+      const baseTransform = window.getComputedStyle(m).transform;
+      const onPress = () => {
+        pressed = m;
+      };
+      baseTransforms.set(m, baseTransform === 'none' ? '' : baseTransform);
+      pressHandlers.set(m, onPress);
+      m.addEventListener('pointerdown', onPress);
+    });
 
     const loop = () => {
       let active = null;
@@ -35,37 +80,52 @@ export default function useMagnetic(rootRef) {
           activeDist = dist;
         }
       });
+      activeEl = active?.el || null;
 
       mags.forEach((m) => {
-        const current = positions.get(m) || { x: 0, y: 0 };
-        if (active?.el !== m) {
-          positions.set(m, { x: 0, y: 0 });
-          m.style.transform = 'translate(0,0)';
-          return;
-        }
+        const isActive = active?.el === m;
+        const current = positions.get(m) || { x: 0, y: 0, scale: 1 };
 
         const target = {
-          x: Math.max(-maxPull, Math.min(maxPull, active.dx * pullStrength)),
-          y: Math.max(-maxPull, Math.min(maxPull, active.dy * pullStrength)),
+          x: isActive ? Math.max(-maxPull, Math.min(maxPull, active.dx * pullStrength)) : 0,
+          y: isActive ? Math.max(-maxPull, Math.min(maxPull, active.dy * pullStrength)) : 0,
+          scale: pressed === m ? pressScale : isActive ? activeScale : 1,
         };
         const next = {
           x: current.x + (target.x - current.x) * ease,
           y: current.y + (target.y - current.y) * ease,
+          scale: current.scale + (target.scale - current.scale) * (pressed === m ? pressEase : ease),
         };
 
         positions.set(m, next);
-        m.style.transform = `translate(${next.x}px, ${next.y}px)`;
+        m.classList.toggle('is-magnetic-active', isActive);
+        m.style.transform = `${baseTransforms.get(m)} translate(${next.x}px, ${next.y}px) scale(${next.scale})`.trim();
       });
+      setCursorMagnetized(Boolean(active));
 
       raf = requestAnimationFrame(loop);
     };
 
     window.addEventListener('mousemove', onMove);
+    window.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', clearPressed);
+    window.addEventListener('blur', clearPressed);
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', clearPressed);
+      window.removeEventListener('blur', clearPressed);
+      setCursorMagnetized(false);
+      mags.forEach((m) => {
+        m.classList.remove('is-magnetic-active');
+        m.removeEventListener('pointerdown', pressHandlers.get(m));
+        m.style.transform = '';
+      });
     };
   }, [rootRef]);
 }

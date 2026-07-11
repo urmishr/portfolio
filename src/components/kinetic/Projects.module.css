@@ -57,19 +57,23 @@
   inset: 0;
   z-index: -1;
   background: var(--bg);
-  background-image: var(--site-bg-grid);
-  background-size: var(--site-bg-size);
   opacity: 0;
-  transition: opacity 0.7s ease;
+  transition: opacity 0.2s ease;
 }
 
-.tab:not(.tabActive):hover {
+.tab:not(.tabActive):hover,
+.tab:not(.tabActive):global(.is-magnetic-active) {
   color: #ffffff;
-  border-color: color-mix(in srgb, #ffffff 22%, transparent);
+  border-color: #ffffff;
 }
 
-.tab:not(.tabActive):hover::before {
+.tab:not(.tabActive):hover::before,
+.tab:not(.tabActive):global(.is-magnetic-active)::before {
   opacity: 1;
+}
+
+.tabActive:global(.is-magnetic-active) {
+  border-color: #ffffff;
 }
 
 .tabActive {
@@ -196,9 +200,12 @@
 }
 
 .iconLink:hover,
-.iconLinkMono:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+.iconLinkMono:hover,
+.iconLink:global(.is-magnetic-active),
+.iconLinkMono:global(.is-magnetic-active) {
+  background: var(--bg);
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .desc {
@@ -410,10 +417,11 @@
     background 0.2s ease;
 }
 
-.carouselControl:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(10, 10, 11, 0.9);
+.carouselControl:hover,
+.carouselControl:global(.is-magnetic-active) {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: var(--bg);
 }
 
 .prevControl {

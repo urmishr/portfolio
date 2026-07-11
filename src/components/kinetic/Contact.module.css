@@ -47,14 +47,14 @@
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 16px;
-  padding: 15px 28px;
+  padding: 14px 27px;
   border-radius: 14px;
-  border: 0;
+  border: 1px solid transparent;
   cursor: pointer;
   transition:
-    transform 0.2s,
-    background-color 0.7s ease,
-    color 0.45s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .cta::before {
@@ -63,18 +63,19 @@
   inset: 0;
   z-index: -1;
   background: var(--bg);
-  background-image: var(--site-bg-grid);
-  background-size: var(--site-bg-size);
   opacity: 0;
-  transition: opacity 0.7s ease;
+  transition: opacity 0.2s ease;
 }
 
-.cta:hover:not(:active) {
+.cta:hover:not(:active),
+.cta:global(.is-magnetic-active) {
   background-color: transparent;
+  border-color: #ffffff;
   color: #ffffff;
 }
 
-.cta:hover:not(:active)::before {
+.cta:hover:not(:active)::before,
+.cta:global(.is-magnetic-active)::before {
   opacity: 1;
 }
 

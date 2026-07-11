@@ -6,14 +6,12 @@ import About from '../components/kinetic/About';
 import Projects from '../components/kinetic/Projects';
 import Contact from '../components/kinetic/Contact';
 import Footer from '../components/kinetic/Footer';
-import useSpotlight from '../hooks/useSpotlight';
 import useMagnetic from '../hooks/useMagnetic';
 import useReveal from '../hooks/useReveal';
 import styles from './Home.module.css';
 
 export default function Home() {
   const rootRef = useRef(null);
-  const spotRef = useSpotlight();
   useMagnetic(rootRef);
   useReveal(rootRef);
 
@@ -29,7 +27,6 @@ export default function Home() {
 
   return (
     <div ref={rootRef} className={styles.root}>
-      <div ref={spotRef} className={styles.spotlight} />
       <Nav />
       <main className={styles.main}>
         <Hero />
