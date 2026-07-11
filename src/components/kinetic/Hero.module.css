@@ -1,11 +1,11 @@
 .section {
-  padding: clamp(48px, 8vw, 96px) 0 clamp(30px, 5vw, 56px);
+  padding: clamp(28px, 4vw, 56px) 0 clamp(30px, 5vw, 56px);
 }
 
 .topRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
   margin-bottom: clamp(28px, 5vw, 54px);
   flex-wrap: wrap;
@@ -225,10 +225,37 @@
 
 @media (max-width: 760px) {
   .section {
-    padding-top: 20px;
+    padding-top: 12px;
+  }
+
+  .left {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 16px;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+  }
+
+  .imFrom {
+    margin-top: 0.28em;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  .h1 {
+    text-align: left;
+    margin-bottom: 22px;
+  }
+
+  .meta {
+    grid-column: 1 / -1;
+    justify-content: center;
+    text-align: center;
   }
 
   .actions {
+    grid-column: 1 / -1;
     justify-content: center;
   }
 

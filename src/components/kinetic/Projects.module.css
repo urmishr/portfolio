@@ -218,11 +218,21 @@
 }
 
 .colLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--accent);
   margin-bottom: 14px;
+}
+
+.colLabelIcon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  stroke-width: 2;
 }
 
 .featureList {

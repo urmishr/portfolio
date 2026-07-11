@@ -1,5 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-import { HiArrowLeft, HiArrowRight, HiArrowTopRightOnSquare, HiCodeBracket } from 'react-icons/hi2';
+import {
+  HiArrowLeft,
+  HiArrowRight,
+  HiArrowTopRightOnSquare,
+  HiCodeBracket,
+  HiOutlineCpuChip,
+  HiOutlinePhoto,
+  HiOutlineSparkles,
+} from 'react-icons/hi2';
 import styles from './Projects.module.css';
 import { PROJECTS } from '../../data/kinetic';
 
@@ -50,6 +58,7 @@ export default function Projects() {
       <div className={styles.tabs}>
         {PROJECTS.map((project, index) => {
           const isActive = index === activeIndex;
+
           return (
             <button
               key={project.id}
@@ -123,7 +132,10 @@ export default function Projects() {
 
         <div className={styles.columns}>
           <div>
-            <div className={styles.colLabel}>◈ KEY FEATURES</div>
+            <div className={styles.colLabel}>
+              <HiOutlineSparkles className={styles.colLabelIcon} aria-hidden="true" />
+              KEY FEATURES
+            </div>
             <div className={styles.featureList}>
               {active.features.map((feature) => (
                 <div key={feature} className={styles.featureRow}>
@@ -134,7 +146,10 @@ export default function Projects() {
             </div>
           </div>
           <div>
-            <div className={styles.colLabel}>◈ TECH & LIBRARIES</div>
+            <div className={styles.colLabel}>
+              <HiOutlineCpuChip className={styles.colLabelIcon} aria-hidden="true" />
+              TECH & LIBRARIES
+            </div>
             <div className={styles.techTable}>
               {active.techRows.map((row) => (
                 <div key={row.label} className={styles.techRow}>
@@ -147,7 +162,10 @@ export default function Projects() {
         </div>
 
         <div className={styles.previewWrap}>
-          <div className={styles.colLabel}>◈ PREVIEW</div>
+          <div className={styles.colLabel}>
+            <HiOutlinePhoto className={styles.colLabelIcon} aria-hidden="true" />
+            PREVIEW
+          </div>
           <div
             className={`${styles.carousel} ${active.previewShape === 'portrait' ? styles.carouselPortrait : ''}`}
             onTouchStart={(event) => setTouchStart(event.touches[0].clientX)}
