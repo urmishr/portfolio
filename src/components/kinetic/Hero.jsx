@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import copy from 'copy-to-clipboard';
+import { HiCheck, HiMapPin, HiOutlineClipboardDocument, HiOutlineDocumentText } from 'react-icons/hi2';
 import styles from './Hero.module.css';
 import ResumePreviewModal from '../ResumePreviewModal';
 import { EMAIL } from '../../data/kinetic';
@@ -42,8 +43,10 @@ export default function Hero() {
           </h1>
           <div data-reveal className={`${styles.meta} delay-3`}>
             <span className={styles.metaStrong}>Full-Stack Developer</span>
-            <span className={styles.metaDot} />
-            <span>Ottawa, Canada</span>
+            <span className={styles.metaLocation}>
+              <HiMapPin className={styles.metaLocationIcon} aria-hidden="true" focusable="false" />
+              Ottawa, Canada
+            </span>
           </div>
           <div data-reveal className={`${styles.actions} delay-4`}>
             <a
@@ -55,10 +58,21 @@ export default function Hero() {
                 setResumeOpen(true);
               }}
             >
-              ◉ View Résumé
+              <HiOutlineDocumentText className={styles.buttonIcon} aria-hidden="true" focusable="false" />
+              View Résumé
             </a>
             <button data-mag type="button" className={styles.copyBtn} onClick={handleCopyEmail}>
-              {copied ? <span className={styles.accentText}>✓ Copied</span> : <span>⧉ Copy email</span>}
+              {copied ? (
+                <span className={styles.accentText}>
+                  <HiCheck className={styles.buttonIcon} aria-hidden="true" focusable="false" />
+                  Copied
+                </span>
+              ) : (
+                <>
+                  <HiOutlineClipboardDocument className={styles.buttonIcon} aria-hidden="true" focusable="false" />
+                  Copy email
+                </>
+              )}
             </button>
           </div>
         </div>

@@ -96,11 +96,17 @@
   font-weight: 500;
 }
 
-.metaDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--muted);
+.metaLocation {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metaLocationIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  flex: 0 0 auto;
 }
 
 .actions {
@@ -170,7 +176,16 @@
   opacity: 1;
 }
 
+.buttonIcon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
 .accentText {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: var(--accent);
 }
 
